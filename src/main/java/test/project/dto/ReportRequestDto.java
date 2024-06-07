@@ -1,17 +1,18 @@
 package test.project.dto;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class ReportRequestDto {
-    private Long companyId;
+    private UUID companyId;
     private BigDecimal totalRevenue;
     private BigDecimal netProfit;
 
-    public Long getCompanyId() {
+    public UUID getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Long companyId) {
+    public void setCompanyId(UUID companyId) {
         this.companyId = companyId;
     }
 

@@ -1,39 +1,47 @@
 package test.project.model;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Report {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long companyId;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
+    private UUID companyId;
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private Timestamp reportDate;
     private BigDecimal totalRevenue;
     private BigDecimal netProfit;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getCompanyId() {
+    public UUID getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Long companyId) {
+    public void setCompanyId(UUID companyId) {
         this.companyId = companyId;
     }
 

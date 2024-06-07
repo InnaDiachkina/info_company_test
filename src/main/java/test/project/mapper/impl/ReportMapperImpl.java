@@ -1,11 +1,11 @@
 package test.project.mapper.impl;
 
+import org.springframework.stereotype.Component;
 import test.project.dto.ReportRequestDto;
 import test.project.dto.ReportResponseDto;
 import test.project.mapper.RequestDtoMapper;
 import test.project.mapper.ResponseDtoMapper;
 import test.project.model.Report;
-import org.springframework.stereotype.Component;
 
 @Component
 public class ReportMapperImpl implements RequestDtoMapper<ReportRequestDto, Report>,

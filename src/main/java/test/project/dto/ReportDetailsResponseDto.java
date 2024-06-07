@@ -1,15 +1,9 @@
-package test.project.model;
+package test.project.dto;
 
 import java.util.UUID;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "report_details")
-public class ReportDetails {
-    @Id
+public class ReportDetailsResponseDto {
     private UUID id;
-    @Field("reportId")
     private UUID reportId;
     private String financialData;
     private String comments;

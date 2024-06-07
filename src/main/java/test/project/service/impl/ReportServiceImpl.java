@@ -1,6 +1,7 @@
 package test.project.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import test.project.dto.ReportRequestDto;
@@ -34,14 +35,14 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public ReportResponseDto getById(Long id) {
+    public ReportResponseDto getById(UUID id) {
         Report report = reportRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Report with id: " + id + "not found"));
         return responseDtoMapper.mapToDto(report);
     }
 
     @Override
-    public List<ReportResponseDto> getAllByCompanyId(Long companyId) {
+    public List<ReportResponseDto> getAllByCompanyId(UUID companyId) {
         return reportRepository.findAllByCompanyId(companyId)
                 .stream()
                 .map(responseDtoMapper::mapToDto)
@@ -49,12 +50,12 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(UUID id) {
         reportRepository.deleteById(id);
     }
 
     @Override
-    public ReportResponseDto update(Long id, ReportRequestDto reportRequestDto) {
+    public ReportResponseDto update(UUID id, ReportRequestDto reportRequestDto) {
         Report report = reportRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Report with id: " + id + "not found"));
         if (reportRequestDto.getCompanyId() != null) {

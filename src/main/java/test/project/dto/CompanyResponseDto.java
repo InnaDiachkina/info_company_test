@@ -1,19 +1,20 @@
 package test.project.dto;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 public class CompanyResponseDto {
-    private Long id;
+    private UUID id;
     private String name;
     private String registrationNumber;
     private String address;
     private Timestamp createdAt;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

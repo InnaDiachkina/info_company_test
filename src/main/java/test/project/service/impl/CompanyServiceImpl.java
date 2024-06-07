@@ -1,6 +1,7 @@
 package test.project.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import test.project.dto.CompanyRequestDto;
@@ -33,7 +34,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyResponseDto getById(Long id) {
+    public CompanyResponseDto getById(UUID id) {
         Company company = companyRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Company with id: " + id + " not found"));
         return responseDtoMapper.mapToDto(company);
@@ -48,7 +49,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyResponseDto update(Long id, CompanyRequestDto companyRequestDto) {
+    public CompanyResponseDto update(UUID id, CompanyRequestDto companyRequestDto) {
         Company company = companyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Company with id: " + id + " not found"));
         if (companyRequestDto.getName() != null) {
@@ -65,7 +66,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(UUID id) {
         companyRepository.deleteById(id);
     }
 }

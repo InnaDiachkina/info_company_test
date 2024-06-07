@@ -2,27 +2,28 @@ package test.project.dto;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 public class ReportResponseDto {
-    private Long id;
-    private Long companyId;
+    private UUID id;
+    private UUID companyId;
     private Timestamp reportDate;
     private BigDecimal totalRevenue;
     private BigDecimal netProfit;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getCompanyId() {
+    public UUID getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Long companyId) {
+    public void setCompanyId(UUID companyId) {
         this.companyId = companyId;
     }
 

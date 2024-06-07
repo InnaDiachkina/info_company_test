@@ -1,6 +1,8 @@
 package test.project.controller;
 
 import java.util.List;
+import java.util.UUID;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -28,23 +30,23 @@ public class ReportController {
     }
 
     @GetMapping("/{id}")
-    public ReportResponseDto getById(@PathVariable Long id) {
+    public ReportResponseDto getById(@PathVariable UUID id) {
         return reportService.getById(id);
     }
 
     @GetMapping("/company/{id}")
-    public List<ReportResponseDto> getByCompanyId(@PathVariable Long id) {
+    public List<ReportResponseDto> getByCompanyId(@PathVariable UUID id) {
         return reportService.getAllByCompanyId(id);
     }
 
     @PatchMapping("/{id}")
-    public ReportResponseDto update(@PathVariable Long id,
+    public ReportResponseDto update(@PathVariable UUID id,
                                     @RequestBody ReportRequestDto reportRequestDto) {
         return reportService.update(id, reportRequestDto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable UUID id) {
         reportService.delete(id);
     }
 }

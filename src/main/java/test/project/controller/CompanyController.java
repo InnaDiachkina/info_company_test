@@ -1,6 +1,7 @@
 package test.project.controller;
 
 import java.util.List;
+import java.util.UUID;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -28,7 +29,7 @@ public class CompanyController {
     }
 
     @GetMapping("/{id}")
-    public CompanyResponseDto getById(@PathVariable Long id) {
+    public CompanyResponseDto getById(@PathVariable UUID id) {
         return companyService.getById(id);
     }
 
@@ -38,13 +39,13 @@ public class CompanyController {
     }
 
     @PatchMapping("/{id}")
-    public CompanyResponseDto update(@PathVariable Long id,
+    public CompanyResponseDto update(@PathVariable UUID id,
                                      @RequestBody CompanyRequestDto companyRequestDto) {
         return companyService.update(id, companyRequestDto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable UUID id) {
         companyService.delete(id);
     }
 }

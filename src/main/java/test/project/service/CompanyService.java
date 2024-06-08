@@ -2,7 +2,6 @@ package test.project.service;
 
 import java.util.List;
 import java.util.UUID;
-
 import test.project.dto.CompanyRequestDto;
 import test.project.dto.CompanyResponseDto;
 

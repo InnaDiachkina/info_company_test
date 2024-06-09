@@ -9,9 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Where;
 
 @Entity
+@SQLDelete(sql = "UPDATE report SET is_deleted = true WHERE id = ?")
+@Where(clause = "is_deleted = false")
 public class Report {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -28,6 +32,8 @@ public class Report {
     private Timestamp reportDate;
     private BigDecimal totalRevenue;
     private BigDecimal netProfit;
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false;
 
     public UUID getId() {
         return id;
@@ -67,5 +73,13 @@ public class Report {
 
     public void setNetProfit(BigDecimal netProfit) {
         this.netProfit = netProfit;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

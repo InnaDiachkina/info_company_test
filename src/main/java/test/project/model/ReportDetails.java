@@ -1,5 +1,6 @@
 package test.project.model;
 
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,7 +12,7 @@ public class ReportDetails {
     private UUID id;
     @Field("reportId")
     private UUID reportId;
-    private String financialData;
+    private Map<String, Object> financialData;
     private String comments;
 
     public UUID getId() {
@@ -30,11 +31,11 @@ public class ReportDetails {
         this.reportId = reportId;
     }
 
-    public String getFinancialData() {
+    public Map<String, Object> getFinancialData() {
         return financialData;
     }
 
-    public void setFinancialData(String financialData) {
+    public void setFinancialData(Map<String, Object> financialData) {
         this.financialData = financialData;
     }
 

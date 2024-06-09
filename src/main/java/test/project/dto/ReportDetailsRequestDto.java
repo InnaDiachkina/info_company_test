@@ -1,10 +1,11 @@
 package test.project.dto;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class ReportDetailsRequestDto {
     private UUID reportId;
-    private String financialData;
+    private Map<String, Object> financialData;
     private String comments;
 
     public UUID getReportId() {
@@ -15,11 +16,11 @@ public class ReportDetailsRequestDto {
         this.reportId = reportId;
     }
 
-    public String getFinancialData() {
+    public Map<String, Object> getFinancialData() {
         return financialData;
     }
 
-    public void setFinancialData(String financialData) {
+    public void setFinancialData(Map<String, Object> financialData) {
         this.financialData = financialData;
     }
 

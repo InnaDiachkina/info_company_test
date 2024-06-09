@@ -7,14 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
 
 @Entity
-@SQLDelete(sql = "UPDATE report SET is_deleted = true WHERE id = ?")
+@Table(name = "reports")
+@SQLDelete(sql = "UPDATE reports SET is_deleted = true WHERE id = ?")
 @Where(clause = "is_deleted = false")
 public class Report {
     @Id
@@ -23,14 +24,16 @@ public class Report {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Type(type="org.hibernate.type.UUIDCharType")
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
+    @Column(name = "company_id")
     private UUID companyId;
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
+    @Column(name = "report_date", nullable = false, updatable = false)
     private Timestamp reportDate;
+    @Column(name = "total_revenue")
     private BigDecimal totalRevenue;
+    @Column(name = "net_profit")
     private BigDecimal netProfit;
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;

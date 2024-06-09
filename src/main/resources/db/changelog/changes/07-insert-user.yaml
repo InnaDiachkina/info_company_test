@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-user
+      author: inna
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$12$rGNw7mdN04EXwcu9y91x8ueOUJY9mWy0zFFr9ZG4NzAqZYfW9rWB2
+
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  valueNumeric: 1
+              - column:
+                  name: role_id
+                  valueNumeric: 2

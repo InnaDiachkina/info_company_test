@@ -1,6 +1,5 @@
 package test.project.config;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.Properties;
 import org.springframework.context.annotation.Bean;

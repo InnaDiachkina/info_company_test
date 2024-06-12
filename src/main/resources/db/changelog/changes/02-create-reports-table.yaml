@@ -5,6 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: reports
+            ifNotExists: true
             columns:
               - column:
                   name: id
